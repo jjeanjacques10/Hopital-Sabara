@@ -1,55 +1,55 @@
 //Create table and fetch data from JSON.
 $(document).ready(function(){
-    $("button").click(function(){
-        $.getJSON("/files/json/Acesso_aos_privilegios_Intranet.json", function(data) {
-            json_obj2 = data;
+    $.getJSON("/files/json/Acesso_aos_privilegios_Intranet.json", function(data) {
+        json_obj2 = data;
+    
+        var k = 0;
+        var table_body = '';
         
-            var k = 0;
-            var table_body = '';
+        for(i =0;i<json_obj2.length;i++){
+                table_body+='<tr>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Código MV"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Nome"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Número do Conselho"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Especialidade"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Escopo de Atuação Geral"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Escopo de Atuação Específico"];
+                table_body +='</td>';
+
+                table_body +='<td>';
+                table_body +=json_obj2[k]["Privilégios Adicionais"];
+                table_body +='</td>';
             
-            for(i =0;i<json_obj2.length;i++){
-                    table_body+='<tr>';
+                table_body+='</tr>';
+                k++;
+                $('#tableDiv').html("<h2>Carregando...</h2>");
+        }
 
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Código MV"];
-                    table_body +='</td>';
+        $('#tableDiv').html(table_body);
+        //display data..........
+    }); 
 
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Nome"];
-                    table_body +='</td>';
+    
+});
 
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Número do Conselho"];
-                    table_body +='</td>';
-
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Especialidade"];
-                    table_body +='</td>';
-
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Escopo de Atuação Geral"];
-                    table_body +='</td>';
-
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Escopo de Atuação Específico"];
-                    table_body +='</td>';
-
-                    table_body +='<td>';
-                    table_body +=json_obj2[k]["Privilégios Adicionais"];
-                    table_body +='</td>';
-                
-                    table_body+='</tr>';
-                    k++;
-                    $('#tableDiv').html("<h2>Carregando...</h2>");
-            }
-
-            $('#tableDiv').html(table_body);
-            //display data..........
-        }); 
-   
-        
-    });
-
+$(document).ready(function(){
     // for search function.................................. only............................
     $("#search").on("keyup", function() {
         var value = $(this).val().toLowerCase();

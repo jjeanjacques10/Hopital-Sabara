@@ -1,0 +1,12 @@
+body{
+    margin: 40px 0px 0px 0px;
+}
+
+table{
+    margin-top: 40px;
+}
+
+.btn-salvar{
+    font-size: 20px;
+    width: 50%;
+}

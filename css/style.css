@@ -1,9 +1,15 @@
 body{
-    margin: 40px 0px 0px 0px;
+    margin-top: 40px;
 }
 
-table{
+#div-table{
     margin-top: 40px;
+    max-height: 1000px;
+    overflow: scroll
+}
+
+#table-acesso tr td:first-child{
+    max-width: 10px;
 }
 
 .btn-salvar{

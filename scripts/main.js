@@ -18,11 +18,11 @@ $(document).ready(function() {
             console.log(k);
             table_body += table_body == " " ? '<tr style="background: #e9edf8;">' : '<tr>';
 
-            table_body += '<th scope="row">';
+            table_body += '<th scope="row" class="codigo">';
             table_body += json_obj2[planilha_name][k]["Código MV"];
             table_body += "</th>";
 
-            table_body += "<td>";
+            table_body += '<td class="nome">';
             table_body += itemUndefined(json_obj2[planilha_name][k]["Nome"]);
             table_body += "</td>";
 
@@ -60,21 +60,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   // for search function.................................. only............................
-  $("#search").on("keyup", function() {
-    var value = $(this)
-      .val()
-      .toLowerCase();
-    $("table tr").filter(function(index) {
-      if (index > 0) {
-        $(this).toggle(
-          $(this)
-            .text()
-            .toLowerCase()
-            .indexOf(value) > -1
-        );
-      }
-    });
-  });
+
   //=================End=========================End===============================
 });
 
@@ -86,3 +72,32 @@ function itemUndefined(item){
       return item;
     }
 }
+
+
+$(document).ready(function() {
+  // for search function.................................. only...........................
+  $("#search").on("keyup", function() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    table = document.querySelector("table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      nome = tr[i].getElementsByTagName("td")[0];
+      numConselho = tr[i].getElementsByTagName("td")[1];
+      especialidade = tr[i].getElementsByTagName("td")[2];
+      if (nome || numConselho || especialidade) {
+        txtNome = nome.textContent || nome.innerText;
+        txtNumConselho = numConselho.textContent || numConselho.innerText;
+        txtEspecialidade = especialidade.textContent || especialidade.innerText;
+    
+        if (txtNome.toUpperCase().indexOf(filter) > -1 || txtNumConselho.toUpperCase().indexOf(filter) > -1 || txtEspecialidade.toUpperCase().indexOf(filter) > -1 ) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
+  });
+  //=================End=========================End===============================
+});

@@ -1,5 +1,6 @@
 
 #Gerando uma tabela dinâmica com um arquivo JSON na linguagem JavaScript
 
-Site para converter o excel para json: https://codebeautify.org/excel-to-json
-
+Sites para converter o excel para json: 
+http://beautifytools.com/excel-to-json-converter.php
+https://www.beautifyconverter.com/excel-to-json-converter.php

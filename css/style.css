@@ -1,16 +1,37 @@
 body{
     margin-top: 40px;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
 }
 
 #div-table{
     margin-top: 40px;
-    max-height: 1000px;
+    max-height: 600px;
     overflow: scroll
 }
 
 #table-acesso tr td:first-child{
     max-width: 10px;
 }
+
+th {
+    text-align: center;
+    vertical-align: center;
+}
+
+.table thead tr th {
+    vertical-align: center;
+}
+
+thead{
+    background-color: #2d75b7;
+    color: aliceblue;
+    text-align: center;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f0f0f0;
+  }
 
 .btn-salvar{
     font-size: 20px;

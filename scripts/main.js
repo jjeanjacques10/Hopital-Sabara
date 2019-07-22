@@ -18,11 +18,11 @@ $(document).ready(function() {
             console.log(k);
             table_body += table_body == " " ? '<tr style="background: #e9edf8;">' : '<tr>';
 
-            table_body += '<th scope="row" class="codigo">';
+            table_body += '<th scope="row">';
             table_body += json_obj2[planilha_name][k]["Código MV"];
             table_body += "</th>";
 
-            table_body += '<td class="nome">';
+            table_body += '<td>';
             table_body += itemUndefined(json_obj2[planilha_name][k]["Nome"]);
             table_body += "</td>";
 
@@ -76,7 +76,7 @@ function itemUndefined(item){
 
 $(document).ready(function() {
   // for search function.................................. only...........................
-  $("#search").on("keyup", function() {
+  $("#btn-buscar").on("click", function() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");
     filter = input.value.toUpperCase();

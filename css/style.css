@@ -38,6 +38,14 @@ thead{
     font-size: 10.5pt;
 }
 
+#table-form th{
+    padding: 10px;
+}
+#table-form td{
+    padding-left: 10px;
+    text-align: center;
+}
+
 #btn-buscar{
     font-size: 10.5pt;
     float: right;

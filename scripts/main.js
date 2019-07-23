@@ -14,8 +14,6 @@ $(document).ready(function() {
 
         for (i = 0; i < json_obj2[planilha_name].length; i++) {
             if (json_obj2[planilha_name][k] != null) {
-            
-            console.log(k);
             table_body += table_body == " " ? '<tr style="background: #e9edf8;">' : '<tr>';
 
             table_body += '<th scope="row">';
@@ -76,26 +74,39 @@ function itemUndefined(item){
 
 $(document).ready(function() {
   // for search function.................................. only...........................
-  $("#btn-buscar").on("click", function() {
+  $("button").click(function() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
-    table = document.querySelector("table");
+    table = document.getElementById("table-acesso");
     tr = table.getElementsByTagName("tr");
+    selectNome = document.getElementById('selectNome');
+    selectNumConselho = document.getElementById('selectNumConselho');
+    selectEspecialidade = document.getElementById('selectEspecialidade');
+    txtNumConselho = txtNome = txtEspecialidade = nome = numConselho = especialidade = "";
+
     for (i = 0; i < tr.length; i++) {
       nome = tr[i].getElementsByTagName("td")[0];
       numConselho = tr[i].getElementsByTagName("td")[1];
       especialidade = tr[i].getElementsByTagName("td")[2];
+      
       if (nome || numConselho || especialidade) {
-        txtNome = nome.textContent || nome.innerText;
-        txtNumConselho = numConselho.textContent || numConselho.innerText;
-        txtEspecialidade = especialidade.textContent || especialidade.innerText;
-    
-        if (txtNome.toUpperCase().indexOf(filter) > -1 || txtNumConselho.toUpperCase().indexOf(filter) > -1 || txtEspecialidade.toUpperCase().indexOf(filter) > -1 ) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+        if(selectNome.checked){
+          txtNome = nome.textContent || nome.innerText;
+          tr[i].style.display = txtNome.toUpperCase().indexOf(filter) > -1 ? "" : "none";
         }
+        if(selectNumConselho.checked){
+          txtNumConselho = numConselho.textContent || numConselho.innerText;
+          tr[i].style.display = txtNumConselho.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+        }
+        if(selectEspecialidade.checked){
+          txtEspecialidade = especialidade.textContent || especialidade.innerText;
+          tr[i].style.display = txtEspecialidade.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+        }
+        if(selectEspecialidade.checked == false && selectNome.checked == false && selectNumConselho.checked == false || input == null){
+          tr[i].style.display = "";
+        }
+
       } 
     }
   });
